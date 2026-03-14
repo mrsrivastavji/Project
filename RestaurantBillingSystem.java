@@ -1,10 +1,8 @@
-// import java.util.ArrayList;
-// import java.util.Scanner;
 import java.util.*;
 
 class MenuItem {
-    private String name;
-    private double price;
+    private final String name;
+    private final double price;
 
     public MenuItem(String name, double price) {
         this.name = name;
@@ -21,8 +19,8 @@ class MenuItem {
 }
 
 class OrderItem {
-    private MenuItem item;
-    private int quantity;
+    private final MenuItem item;
+    private final int quantity;
 
     public OrderItem(MenuItem item, int quantity) {
         this.item = item;
