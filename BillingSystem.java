@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 // Model Class: Represents an inventory item
 class Item {
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
     private double price;
     private int stock;
 
@@ -30,12 +30,10 @@ class Item {
     }
 }
 
-
-
 // Manager Class: Handles inventory & billing
 class InventoryManager {
-    private ArrayList<Item> items = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private final ArrayList<Item> items = new ArrayList<>();
+    private final Scanner sc = new Scanner(System.in);
 
     // Add new item to inventory
     public void addItem() {
@@ -72,22 +70,21 @@ class InventoryManager {
         int choice = getIntInput();
 
         switch (choice) {
-            case 1:
+            case 1 -> {
                 System.out.print("Enter new price: ");
                 double newPrice = getDoubleInput();
                 item.setPrice(newPrice);
                 System.out.println("Price updated successfully!");
-                break;
+            }
 
-            case 2:
+            case 2 -> {
                 System.out.print("Enter new stock quantity: ");
                 int newStock = getIntInput();
                 item.setStock(newStock);
                 System.out.println("Stock updated successfully!");
-                break;
+            }
 
-            default:
-                System.out.println("Invalid option!");
+            default -> System.out.println("Invalid option!");
         }
     }
 
@@ -185,7 +182,7 @@ class InventoryManager {
         while (true) {
             try {
                 return Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.print("Invalid input! Enter a number: ");
             }
         }
@@ -196,7 +193,7 @@ class InventoryManager {
         while (true) {
             try {
                 return Double.parseDouble(sc.nextLine());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.print("Invalid input! Enter a valid number: ");
             }
         }
@@ -216,21 +213,19 @@ class InventoryManager {
             int choice = getIntInput();
 
             switch (choice) {
-                case 1: addItem(); break;
-                case 2: updateItem(); break;
-                case 3: viewInventory(); break;
-                case 4: generateBill(); break;
-                case 5:
+                case 1 -> addItem();
+                case 2 -> updateItem();
+                case 3 -> viewInventory();
+                case 4 -> generateBill();
+                case 5 -> {
                     System.out.println("Exiting system...");
                     return;
-                default:
-                    System.out.println("Invalid choice! Try again.");
+                }
+                default -> System.out.println("Invalid choice! Try again.");
             }
         }
     }
 }
-
-
 
 // Main Class
 public class BillingSystem {
