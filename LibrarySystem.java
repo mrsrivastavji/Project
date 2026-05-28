@@ -1,9 +1,9 @@
 import java.util.*;
 
 class Book {
-    private String id;
-    private String title;
-    private String author;
+    private final String id;
+    private final String title;
+    private final String author;
 
     public Book(String id, String title, String author) {
         this.id = id;
@@ -23,8 +23,8 @@ class Book {
 
 public class LibrarySystem {
 
-    private static ArrayList<Book> books = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
+    private static final ArrayList<Book> books = new ArrayList<>();
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         int choice;

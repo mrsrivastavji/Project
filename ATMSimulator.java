@@ -59,53 +59,53 @@ class ATM {
 
     private void showMenu() {
 
-        while (sessionActive) {
-
-            System.out.println("\n--- ATM MENU ---");
-            System.out.println("1. Check Balance");
-            System.out.println("2. Deposit Money");
-            System.out.println("3. Withdraw Money");
-            System.out.println("4. Exit");
-
-            System.out.print("Choose an option: ");
-            int choice = sc.nextInt();
-
-            switch (choice) {
-
-                case 1 ->
-                    System.out.println("Your balance: ₹" + account.getBalance());
-
-                case 2 -> {
-                    System.out.print("Enter deposit amount: ");
-                    double depAmt = sc.nextDouble();
-
-                    account.deposit(depAmt);
-
-                    System.out.println("Amount deposited successfully.");
-                }
-
-                case 3 -> {
-                    System.out.print("Enter withdrawal amount: ");
-                    double wAmt = sc.nextDouble();
-
-                    if (account.withdraw(wAmt)) {
-                        System.out.println("Withdrawal successful.");
-                    } else {
-                        System.out.println("Insufficient balance.");
+        try (sc) {
+            while (sessionActive) {
+                
+                System.out.println("\n--- ATM MENU ---");
+                System.out.println("1. Check Balance");
+                System.out.println("2. Deposit Money");
+                System.out.println("3. Withdraw Money");
+                System.out.println("4. Exit");
+                
+                System.out.print("Choose an option: ");
+                int choice = sc.nextInt();
+                
+                switch (choice) {
+                    
+                    case 1 ->
+                        System.out.println("Your balance: ₹" + account.getBalance());
+                        
+                    case 2 -> {
+                        System.out.print("Enter deposit amount: ");
+                        double depAmt = sc.nextDouble();
+                        
+                        account.deposit(depAmt);
+                        
+                        System.out.println("Amount deposited successfully.");
                     }
+                    
+                    case 3 -> {
+                        System.out.print("Enter withdrawal amount: ");
+                        double wAmt = sc.nextDouble();
+                        
+                        if (account.withdraw(wAmt)) {
+                            System.out.println("Withdrawal successful.");
+                        } else {
+                            System.out.println("Insufficient balance.");
+                        }
+                    }
+                    
+                    case 4 -> {
+                        System.out.println("Exiting session...");
+                        sessionActive = false;
+                    }
+                    
+                    default ->
+                        System.out.println("Invalid choice.");
                 }
-
-                case 4 -> {
-                    System.out.println("Exiting session...");
-                    sessionActive = false;
-                }
-
-                default ->
-                    System.out.println("Invalid choice.");
             }
         }
-
-        sc.close();
     }
 }
 

@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Student {
-    private int id;
+    private final int id;
     private String name;
     private int age;
     private String course;
@@ -44,8 +44,8 @@ class Student {
 }
 
 public class StudentManagementSystem {
-    private static ArrayList<Student> students = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
+    private static final ArrayList<Student> students = new ArrayList<>();
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
